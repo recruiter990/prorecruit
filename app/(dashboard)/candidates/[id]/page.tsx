@@ -21,6 +21,7 @@ import {
 import type { CandidateAnalysis, AIAnalysisResult } from "@/types";
 import { toast } from "sonner";
 import jsPDF from "jspdf";
+import { DetailPageSkeleton } from "@/components/dashboard/DashboardSkeletons";
 
 export default function CandidateDetailPage() {
   const params = useParams();
@@ -88,7 +89,7 @@ export default function CandidateDetailPage() {
   };
 
   if (loading) {
-    return <p className="py-12 text-center text-muted-foreground">Loading analysis...</p>;
+    return <DetailPageSkeleton />;
   }
 
   if (!candidate) {

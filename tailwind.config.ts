@@ -10,6 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        page: "#0A0F1E",
         background: "#0F172A",
         foreground: "#F8FAFC",
         card: {
@@ -39,7 +40,8 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-inter)", "sans-serif"],
-        heading: ["var(--font-inter)", "sans-serif"],
+        heading: ["var(--font-syne)", "var(--font-inter)", "sans-serif"],
+        syne: ["var(--font-syne)", "sans-serif"],
       },
       borderRadius: {
         lg: "0.5rem",

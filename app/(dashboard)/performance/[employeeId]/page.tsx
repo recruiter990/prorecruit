@@ -25,6 +25,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { getPerformanceColor } from "@/lib/utils";
 import { toast } from "sonner";
+import { DetailPageSkeleton } from "@/components/dashboard/DashboardSkeletons";
 
 const STATUS_COLORS: Record<string, string> = {
   present: "#22C55E",
@@ -91,7 +92,7 @@ export default function EmployeeDetailPage() {
   };
 
   if (loading || !employee) {
-    return <p className="py-12 text-center text-muted-foreground">Loading...</p>;
+    return <DetailPageSkeleton />;
   }
 
   const dateRange = getDefaultDateRange();

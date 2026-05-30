@@ -36,6 +36,7 @@ export async function updateSession(request: NextRequest) {
   const isDashboard =
     request.nextUrl.pathname.startsWith("/dashboard") ||
     request.nextUrl.pathname.startsWith("/performance") ||
+    request.nextUrl.pathname.startsWith("/scoring") ||
     request.nextUrl.pathname.startsWith("/candidates") ||
     request.nextUrl.pathname.startsWith("/settings");
 

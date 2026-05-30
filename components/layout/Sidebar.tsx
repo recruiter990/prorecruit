@@ -10,6 +10,7 @@ import {
   LogOut,
   Menu,
   X,
+  Sparkles,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -21,6 +22,7 @@ import { toast } from "sonner";
 const navItems = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/performance", label: "Performance", icon: Users },
+  { href: "/scoring", label: "AI Scoring", icon: Sparkles },
   { href: "/candidates", label: "Candidates", icon: Target },
   { href: "/settings", label: "Settings", icon: Settings },
 ];
@@ -54,11 +56,11 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
 
   const NavContent = () => (
     <>
-      <div className="flex items-center gap-3 px-4 py-6 border-b border-border">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary font-heading font-bold text-white">
-          PR
-        </div>
-        <span className="font-heading text-xl font-bold text-foreground">ProRecruit</span>
+      <div className="flex items-center gap-3 px-4 py-6 border-b border-[#F3F4F6]">
+        <span className="font-extrabold text-xl tracking-tight">
+          <span style={{ color: "#0A0A0A" }}>Pro</span>
+          <span style={{ color: "#6366F1" }}>Recruit</span>
+        </span>
       </div>
 
       <nav className="flex-1 space-y-1 p-4">
@@ -70,10 +72,10 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
               href={item.href}
               onClick={() => setMobileOpen(false)}
               className={cn(
-                "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
+                "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors font-[family-name:var(--font-plus-jakarta-sans)]",
                 isActive
-                  ? "bg-primary text-white"
-                  : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                  ? "bg-[#6366F1] text-white"
+                  : "text-[#6B7280] hover:bg-[#F9FAFB] hover:text-[#0A0A0A]"
               )}
             >
               <item.icon className="h-5 w-5" />
@@ -83,19 +85,19 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
         })}
       </nav>
 
-      <div className="border-t border-border p-4">
+      <div className="border-t border-[#F3F4F6] p-4">
         <div className="flex items-center gap-3 mb-3">
           <Avatar>
             <AvatarFallback>{initials}</AvatarFallback>
           </Avatar>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-foreground truncate">{userName || "HR User"}</p>
-            <p className="text-xs text-muted-foreground truncate">{userEmail || ""}</p>
+            <p className="text-sm font-medium text-[#0A0A0A] truncate">{userName || "HR User"}</p>
+            <p className="text-xs text-[#6B7280] truncate">{userEmail || ""}</p>
           </div>
         </div>
         <Button
           variant="ghost"
-          className="w-full justify-start gap-2 text-muted-foreground"
+          className="w-full justify-start gap-2 text-[#6B7280] hover:bg-[#F9FAFB] hover:text-[#0A0A0A]"
           onClick={handleLogout}
         >
           <LogOut className="h-4 w-4" />
@@ -125,7 +127,7 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
 
       <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-40 flex w-64 flex-col bg-card border-r border-border transition-transform lg:translate-x-0",
+          "fixed inset-y-0 left-0 z-40 flex w-64 flex-col bg-white border-r border-[#F3F4F6] transition-transform lg:translate-x-0 font-[family-name:var(--font-plus-jakarta-sans)]",
           mobileOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >

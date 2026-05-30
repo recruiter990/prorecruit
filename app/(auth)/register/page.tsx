@@ -45,8 +45,11 @@ export default function RegisterPage() {
     <div className="flex min-h-screen items-center justify-center bg-background p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary font-heading text-xl font-bold text-white">
-            PR
+          <div className="mx-auto mb-4">
+            <span className="font-extrabold text-xl tracking-tight">
+              <span style={{ color: "#0A0A0A" }}>Pro</span>
+              <span style={{ color: "#6366F1" }}>Recruit</span>
+            </span>
           </div>
           <CardTitle className="font-heading">Create Account</CardTitle>
           <CardDescription>Start using ProRecruit for your HR team</CardDescription>

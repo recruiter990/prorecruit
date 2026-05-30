@@ -1,12 +1,75 @@
+@import 'tw-animate-css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --font-plus-jakarta-sans: 'Plus Jakarta Sans', sans-serif;
+  }
+
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@layer components {
+  .dashboard-card {
+    @apply rounded-2xl border border-[#F3F4F6] bg-white transition-all duration-300 shadow-sm;
+  }
+
+  .dashboard-card:hover {
+    @apply -translate-y-0.5 shadow-[0_8px_24px_rgba(99,102,241,0.12)];
+  }
+
+  .btn-primary-glow {
+    @apply bg-[#6366F1] transition-all duration-300;
+  }
+
+  .btn-primary-glow:hover:not(:disabled) {
+    @apply shadow-[0_0_20px_rgba(99,102,241,0.45)] bg-[#6366F1]/90;
+  }
+
+  .btn-landing-primary:hover {
+    box-shadow: 0 0 24px rgba(99, 102, 241, 0.5);
+  }
+
+  .btn-landing-ghost:hover {
+    box-shadow: 0 0 16px rgba(99, 102, 241, 0.25);
+    border-color: #6366f1;
+  }
+}
+
+@layer utilities {
+  .landing-fade {
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+
+  .landing-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+body {
+  font-family: var(--font-plus-jakarta-sans), 'Plus Jakarta Sans', sans-serif;
 }

@@ -20,6 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Users, TrendingUp, Award, AlertTriangle } from "lucide-react";
+import { PerformancePageSkeleton } from "@/components/dashboard/DashboardSkeletons";
 
 export default function PerformancePage() {
   const [employees, setEmployees] = useState<EmployeeWithProductivity[]>([]);
@@ -179,7 +180,7 @@ export default function PerformancePage() {
       </div>
 
       {loading ? (
-        <p className="text-center text-muted-foreground py-12">Loading performance data...</p>
+        <PerformancePageSkeleton />
       ) : (
         <>
           <div className="mb-8">

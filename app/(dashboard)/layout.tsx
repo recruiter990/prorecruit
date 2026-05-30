@@ -16,10 +16,10 @@ export default async function DashboardLayout({
   const userEmail = user?.email || "";
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white font-[family-name:var(--font-plus-jakarta-sans)]">
       <Sidebar userName={userName} userEmail={userEmail} />
-      <main className="lg:pl-64">
-        <div className="container mx-auto p-6 lg:p-8">{children}</div>
+      <main className="lg:pl-64 bg-white">
+        <div className="container mx-auto p-6 lg:p-8 text-[#0A0A0A] font-[family-name:var(--font-plus-jakarta-sans)]">{children}</div>
       </main>
     </div>
   );
