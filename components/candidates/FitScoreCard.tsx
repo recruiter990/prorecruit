@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FitScoreGauge } from "@/components/performance/ProductivityChart";
 import { Badge } from "@/components/ui/badge";
-import { getRecommendationColor } from "@/lib/utils";
+import { cn, getRecommendationColor } from "@/lib/utils";
 
 interface FitScoreCardProps {
   candidateName: string;
@@ -9,6 +9,7 @@ interface FitScoreCardProps {
   fitScore: number;
   recommendation: string;
   matchSummary: string;
+  className?: string;
 }
 
 export function FitScoreCard({
@@ -17,9 +18,10 @@ export function FitScoreCard({
   fitScore,
   recommendation,
   matchSummary,
+  className,
 }: FitScoreCardProps) {
   return (
-    <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+    <Card className={cn("bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700", className)}>
       <CardContent className="flex flex-col items-center gap-4 p-8 sm:flex-row sm:items-start sm:justify-between">
         <div className="text-center sm:text-left">
           <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-white">{candidateName}</h2>

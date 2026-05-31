@@ -103,6 +103,7 @@ export default function CandidateDetailPage() {
       </Link>
 
       <FitScoreCard
+        className="rounded-2xl"
         candidateName={candidate.candidate_name || "Unknown"}
         jobTitle={candidate.job_title || "Unknown Role"}
         fitScore={candidate.fit_score || 0}

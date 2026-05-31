@@ -118,6 +118,7 @@ export default function PerformancePage() {
   return (
     <div>
       <TopBar
+        className="rounded-2xl"
         title="Employee Performance"
         description="Track attendance and project productivity"
       />

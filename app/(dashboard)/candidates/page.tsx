@@ -39,6 +39,7 @@ export default async function CandidatesPage({
   return (
     <div>
       <TopBar
+        className="rounded-2xl"
         title="Candidate Intelligence"
         description="AI-powered resume and job fit analysis"
         action={

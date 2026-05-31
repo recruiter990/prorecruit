@@ -130,7 +130,7 @@ export default function EmployeeDetailPage() {
         <ArrowLeft className="mr-1 h-4 w-4" /> Back to Performance
       </Link>
 
-      <TopBar title={employee.name} description={`${employee.position || "Employee"} · ${employee.department || "No department"}`} />
+      <TopBar className="rounded-2xl" title={employee.name} description={`${employee.position || "Employee"} · ${employee.department || "No department"}`} />
 
       <div className="mb-6 grid gap-6 lg:grid-cols-3">
         <Card className="lg:col-span-2 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">

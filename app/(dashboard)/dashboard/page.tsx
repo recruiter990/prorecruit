@@ -38,6 +38,7 @@ export default async function DashboardPage() {
   return (
     <div>
       <TopBar
+        className="rounded-2xl"
         title="Dashboard"
         description="Overview of employee performance and candidate intelligence"
       />

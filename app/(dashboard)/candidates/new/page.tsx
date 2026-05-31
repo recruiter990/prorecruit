@@ -72,6 +72,7 @@ export default function NewCandidatePage() {
   return (
     <div>
       <TopBar
+        className="rounded-2xl"
         title="New Candidate Analysis"
         description="Analyze how well a candidate fits a job opening"
       />

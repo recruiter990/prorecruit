@@ -268,6 +268,7 @@ export default function ScoringPage() {
   return (
     <div>
       <TopBar
+        className="rounded-2xl"
         title="AI Candidate Scoring"
         description="Upload a job description and candidate resumes to receive instant AI-powered scores"
       />
