@@ -35,36 +35,37 @@ function getBarColor(level: string) {
 
 export function ProductivityChart({ data, trendData }: ProductivityChartProps) {
   return (
-    <Card>
+    <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
       <CardHeader>
-        <CardTitle className="text-lg">Productivity Overview</CardTitle>
+        <CardTitle className="text-lg text-gray-800 dark:text-gray-100">Productivity Overview</CardTitle>
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="bar">
           <TabsList className="mb-4">
-            <TabsTrigger value="bar">Bar Chart</TabsTrigger>
-            <TabsTrigger value="line">Line Chart</TabsTrigger>
+            <TabsTrigger value="bar" className="text-gray-900 dark:text-white">Bar Chart</TabsTrigger>
+            <TabsTrigger value="line" className="text-gray-900 dark:text-white">Line Chart</TabsTrigger>
           </TabsList>
           <TabsContent value="bar">
             {data.length === 0 ? (
-              <p className="py-12 text-center text-muted-foreground">No employee data yet</p>
+              <p className="py-12 text-center text-gray-600 dark:text-gray-300">No employee data yet</p>
             ) : (
               <ResponsiveContainer width="100%" height={350}>
                 <BarChart data={data} margin={{ top: 5, right: 20, left: 0, bottom: 60 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
                   <XAxis
                     dataKey="name"
-                    tick={{ fill: "#94A3B8", fontSize: 12 }}
+                    tick={{ fill: "#6B7280", fontSize: 12 }}
                     angle={-45}
                     textAnchor="end"
                     height={80}
                   />
-                  <YAxis tick={{ fill: "#94A3B8" }} domain={[0, 100]} />
+                  <YAxis tick={{ fill: "#6B7280" }} domain={[0, 100]} />
                   <Tooltip
                     contentStyle={{
-                      backgroundColor: "#1E293B",
-                      border: "1px solid #334155",
+                      backgroundColor: "#FFFFFF",
+                      border: "1px solid #E5E7EB",
                       borderRadius: "8px",
+                      color: "#0A0A0A",
                     }}
                   />
                   <Bar dataKey="score" radius={[4, 4, 0, 0]}>
@@ -78,18 +79,19 @@ export function ProductivityChart({ data, trendData }: ProductivityChartProps) {
           </TabsContent>
           <TabsContent value="line">
             {(!trendData || trendData.length === 0) ? (
-              <p className="py-12 text-center text-muted-foreground">No trend data available</p>
+              <p className="py-12 text-center text-gray-600 dark:text-gray-300">No trend data available</p>
             ) : (
               <ResponsiveContainer width="100%" height={350}>
                 <LineChart data={trendData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-                  <XAxis dataKey="week" tick={{ fill: "#94A3B8" }} />
-                  <YAxis tick={{ fill: "#94A3B8" }} domain={[0, 100]} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
+                  <XAxis dataKey="week" tick={{ fill: "#6B7280" }} />
+                  <YAxis tick={{ fill: "#6B7280" }} domain={[0, 100]} />
                   <Tooltip
                     contentStyle={{
-                      backgroundColor: "#1E293B",
-                      border: "1px solid #334155",
+                      backgroundColor: "#FFFFFF",
+                      border: "1px solid #E5E7EB",
                       borderRadius: "8px",
+                      color: "#0A0A0A",
                     }}
                   />
                   <Line
@@ -122,7 +124,7 @@ export function FitScoreGauge({ score }: { score: number }) {
           cy="50"
           r="45"
           fill="none"
-          stroke="#334155"
+          stroke="#E5E7EB"
           strokeWidth="8"
         />
         <circle
@@ -142,7 +144,7 @@ export function FitScoreGauge({ score }: { score: number }) {
         <span className="text-3xl font-bold" style={{ color }}>
           {score}
         </span>
-        <span className="block text-xs text-muted-foreground">% fit</span>
+        <span className="block text-xs text-gray-500 dark:text-gray-400">% fit</span>
       </div>
     </div>
   );

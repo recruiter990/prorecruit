@@ -86,23 +86,23 @@ export default function SettingsPage() {
       <TopBar title="Settings" description="Manage your profile and preferences" />
 
       <div className="max-w-2xl space-y-6">
-        <Card>
+        <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
           <CardHeader>
-            <CardTitle>Profile</CardTitle>
-            <CardDescription>Update your account information</CardDescription>
+            <CardTitle className="text-gray-800 dark:text-gray-100">Profile</CardTitle>
+            <CardDescription className="text-gray-600 dark:text-gray-300">Update your account information</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="fullName">Full Name</Label>
-              <Input id="fullName" value={fullName} onChange={(e) => setFullName(e.target.value)} />
+              <Label htmlFor="fullName" className="text-gray-700 dark:text-gray-200">Full Name</Label>
+              <Input id="fullName" className="text-gray-900 dark:text-white bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 placeholder:text-gray-400" value={fullName} onChange={(e) => setFullName(e.target.value)} />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="companyName">Company Name</Label>
-              <Input id="companyName" value={companyName} onChange={(e) => setCompanyName(e.target.value)} />
+              <Label htmlFor="companyName" className="text-gray-700 dark:text-gray-200">Company Name</Label>
+              <Input id="companyName" className="text-gray-900 dark:text-white bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 placeholder:text-gray-400" value={companyName} onChange={(e) => setCompanyName(e.target.value)} />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <Label htmlFor="email" className="text-gray-700 dark:text-gray-200">Email</Label>
+              <Input id="email" type="email" className="text-gray-900 dark:text-white bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 placeholder:text-gray-400" value={email} onChange={(e) => setEmail(e.target.value)} />
             </div>
             <Button onClick={handleSaveProfile} disabled={loading}>
               {loading ? "Saving..." : "Save Profile"}
@@ -110,49 +110,50 @@ export default function SettingsPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
           <CardHeader>
-            <CardTitle>API Keys</CardTitle>
-            <CardDescription>Store your Groq API key in user metadata</CardDescription>
+            <CardTitle className="text-gray-800 dark:text-gray-100">API Keys</CardTitle>
+            <CardDescription className="text-gray-600 dark:text-gray-300">Store your Groq API key in user metadata</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="groqKey">Groq API Key</Label>
+              <Label htmlFor="groqKey" className="text-gray-700 dark:text-gray-200">Groq API Key</Label>
               <Input
                 id="groqKey"
                 type="password"
                 placeholder="gsk_..."
+                className="text-gray-900 dark:text-white bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 placeholder:text-gray-400"
                 value={groqKey}
                 onChange={(e) => setGroqKey(e.target.value)}
               />
             </div>
-            <Button variant="outline" onClick={handleSaveProfile}>
+            <Button variant="outline" className="text-gray-900 dark:text-white" onClick={handleSaveProfile}>
               Save API Key
             </Button>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
           <CardHeader>
-            <CardTitle>CSV Templates</CardTitle>
-            <CardDescription>Download sample CSV files for data upload</CardDescription>
+            <CardTitle className="text-gray-800 dark:text-gray-100">CSV Templates</CardTitle>
+            <CardDescription className="text-gray-600 dark:text-gray-300">Download sample CSV files for data upload</CardDescription>
           </CardHeader>
           <CardContent className="flex flex-wrap gap-3">
-            <Button variant="outline" onClick={() => downloadTemplate("attendance")}>
+            <Button variant="outline" className="text-gray-900 dark:text-white" onClick={() => downloadTemplate("attendance")}>
               <Download className="mr-2 h-4 w-4" />
               Attendance Template
             </Button>
-            <Button variant="outline" onClick={() => downloadTemplate("project")}>
+            <Button variant="outline" className="text-gray-900 dark:text-white" onClick={() => downloadTemplate("project")}>
               <Download className="mr-2 h-4 w-4" />
               Project Tasks Template
             </Button>
           </CardContent>
         </Card>
 
-        <Card className="border-danger/30">
+        <Card className="bg-white dark:bg-gray-800 border-red-200 dark:border-red-800">
           <CardHeader>
-            <CardTitle className="text-danger">Danger Zone</CardTitle>
-            <CardDescription>Permanently delete all your ProRecruit data</CardDescription>
+            <CardTitle className="text-red-600 dark:text-red-400">Danger Zone</CardTitle>
+            <CardDescription className="text-gray-600 dark:text-gray-300">Permanently delete all your ProRecruit data</CardDescription>
           </CardHeader>
           <CardContent>
             <Button variant="destructive" onClick={handleDeleteAll}>

@@ -7,19 +7,40 @@
 @layer base {
   :root {
     --font-plus-jakarta-sans: 'Plus Jakarta Sans', sans-serif;
+    --background: #ffffff;
+    --foreground: #0a0a0a;
+    --card: #ffffff;
+    --card-foreground: #0a0a0a;
+    --muted-foreground: #6b7280;
+    --border: #e5e7eb;
+    --input: #e5e7eb;
+    --primary: #0a0a0a;
+    --primary-foreground: #ffffff;
+  }
+
+  .dark {
+    --background: #0A0F1E;
+    --foreground: #F8FAFC;
+    --card: #1E293B;
+    --card-foreground: #F8FAFC;
+    --muted-foreground: #94A3B8;
+    --border: #334155;
+    --input: #334155;
+    --primary: #6366F1;
+    --primary-foreground: #ffffff;
   }
 
   * {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background;
   }
 }
 
 @layer components {
   .dashboard-card {
-    @apply rounded-2xl border border-[#F3F4F6] bg-white transition-all duration-300 shadow-sm;
+    @apply rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 transition-all duration-300 shadow-sm;
   }
 
   .dashboard-card:hover {

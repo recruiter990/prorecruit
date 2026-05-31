@@ -19,15 +19,15 @@ export function FitScoreCard({
   matchSummary,
 }: FitScoreCardProps) {
   return (
-    <Card>
+    <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
       <CardContent className="flex flex-col items-center gap-4 p-8 sm:flex-row sm:items-start sm:justify-between">
         <div className="text-center sm:text-left">
-          <h2 className="font-heading text-2xl font-bold">{candidateName}</h2>
-          <p className="text-muted-foreground">{jobTitle}</p>
+          <h2 className="font-heading text-2xl font-bold text-gray-900 dark:text-white">{candidateName}</h2>
+          <p className="text-gray-600 dark:text-gray-300">{jobTitle}</p>
           <Badge className={`mt-3 ${getRecommendationColor(recommendation)}`}>
             {recommendation}
           </Badge>
-          <p className="mt-4 max-w-lg text-sm text-muted-foreground">{matchSummary}</p>
+          <p className="mt-4 max-w-lg text-sm text-gray-600 dark:text-gray-300">{matchSummary}</p>
         </div>
         <FitScoreGauge score={fitScore} />
       </CardContent>

@@ -146,9 +146,9 @@ export default function PerformancePage() {
 
       <div className="mb-6 flex flex-wrap gap-4">
         <div className="space-y-1">
-          <Label>Department</Label>
+          <Label className="text-gray-700 dark:text-gray-200">Department</Label>
           <Select value={department} onValueChange={setDepartment}>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-[180px] text-gray-900 dark:text-white bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600">
               <SelectValue placeholder="All departments" />
             </SelectTrigger>
             <SelectContent>
@@ -160,21 +160,21 @@ export default function PerformancePage() {
           </Select>
         </div>
         <div className="space-y-1">
-          <Label>Start Date</Label>
+          <Label className="text-gray-700 dark:text-gray-200">Start Date</Label>
           <Input
             type="date"
             value={dateRange.start}
             onChange={(e) => setDateRange({ ...dateRange, start: e.target.value })}
-            className="w-[180px]"
+            className="w-[180px] text-gray-900 dark:text-white bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600"
           />
         </div>
         <div className="space-y-1">
-          <Label>End Date</Label>
+          <Label className="text-gray-700 dark:text-gray-200">End Date</Label>
           <Input
             type="date"
             value={dateRange.end}
             onChange={(e) => setDateRange({ ...dateRange, end: e.target.value })}
-            className="w-[180px]"
+            className="w-[180px] text-gray-900 dark:text-white bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600"
           />
         </div>
       </div>

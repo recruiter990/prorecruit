@@ -86,13 +86,13 @@ export default function NewCandidatePage() {
           }}
         />
 
-        <Card>
+        <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
           <CardContent className="p-6">
             {analyzing ? (
               <div className="flex flex-col items-center gap-4 py-8">
-                <Loader2 className="h-12 w-12 animate-spin text-primary" />
-                <p className="text-lg font-medium">ProRecruit AI is analyzing the candidate...</p>
-                <p className="text-sm text-muted-foreground">This may take 15-30 seconds</p>
+                <Loader2 className="h-12 w-12 animate-spin text-[#6366F1]" />
+                <p className="text-lg font-medium text-gray-900 dark:text-white">ProRecruit AI is analyzing the candidate...</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">This may take 15-30 seconds</p>
               </div>
             ) : (
               <Button

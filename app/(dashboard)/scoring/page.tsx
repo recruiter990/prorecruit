@@ -277,15 +277,15 @@ export default function ScoringPage() {
         <div className="space-y-6">
           <Card className="dashboard-card">
             <CardHeader>
-              <CardTitle className="text-lg">Job Description</CardTitle>
+              <CardTitle className="text-lg text-gray-800 dark:text-gray-100">Job Description</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <Tabs value={jdTab} onValueChange={setJdTab}>
                 <TabsList className="w-full">
-                  <TabsTrigger value="paste" className="flex-1">
+                  <TabsTrigger value="paste" className="flex-1 text-gray-900 dark:text-white">
                     Paste Text
                   </TabsTrigger>
-                  <TabsTrigger value="upload" className="flex-1">
+                  <TabsTrigger value="upload" className="flex-1 text-gray-900 dark:text-white">
                     Upload File
                   </TabsTrigger>
                 </TabsList>
@@ -295,27 +295,27 @@ export default function ScoringPage() {
                     placeholder="Paste the full job description here"
                     value={jobDescription}
                     onChange={(e) => setJobDescription(e.target.value)}
-                    className="resize-none"
+                    className="resize-none bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder-gray-400"
                   />
                 </TabsContent>
                 <TabsContent value="upload" className="mt-4">
                   <div
                     {...jdDropzone.getRootProps()}
                     className={cn(
-                      "flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-border p-8 transition-colors hover:border-primary/50",
-                      jdDropzone.isDragActive && "border-primary bg-primary/5"
+                      "flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-gray-300 dark:border-gray-600 p-8 transition-colors hover:border-[#6366F1]/50",
+                      jdDropzone.isDragActive && "border-[#6366F1] bg-[#6366F1]/5"
                     )}
                   >
                     <input {...jdDropzone.getInputProps()} />
-                    <Upload className="mb-2 h-8 w-8 text-muted-foreground" />
-                    <p className="text-sm text-muted-foreground">PDF or TXT only</p>
+                    <Upload className="mb-2 h-8 w-8 text-gray-500 dark:text-gray-400" />
+                    <p className="text-sm text-gray-600 dark:text-gray-300">PDF or TXT only</p>
                   </div>
                 </TabsContent>
               </Tabs>
 
               {skills.length > 0 && (
                 <div>
-                  <p className="mb-2 text-xs font-medium text-muted-foreground">
+                  <p className="mb-2 text-xs font-medium text-gray-700 dark:text-gray-200">
                     Required skills detected
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -335,19 +335,19 @@ export default function ScoringPage() {
 
           <Card className="dashboard-card">
             <CardHeader>
-              <CardTitle className="text-lg">Candidates</CardTitle>
+              <CardTitle className="text-lg text-gray-800 dark:text-gray-100">Candidates</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div
                 {...resumeDropzone.getRootProps()}
                 className={cn(
-                  "flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-border p-8 transition-colors hover:border-primary/50",
-                  resumeDropzone.isDragActive && "border-primary bg-primary/5"
+                  "flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-gray-300 dark:border-gray-600 p-8 transition-colors hover:border-[#6366F1]/50",
+                  resumeDropzone.isDragActive && "border-[#6366F1] bg-[#6366F1]/5"
                 )}
               >
                 <input {...resumeDropzone.getInputProps()} />
-                <Upload className="mb-2 h-8 w-8 text-muted-foreground" />
-                <p className="text-sm text-muted-foreground">
+                <Upload className="mb-2 h-8 w-8 text-gray-500 dark:text-gray-400" />
+                <p className="text-sm text-gray-600 dark:text-gray-300">
                   Drop multiple PDF resumes (max 10)
                 </p>
               </div>
@@ -357,13 +357,13 @@ export default function ScoringPage() {
                   {candidates.map((c) => (
                     <div
                       key={c.id}
-                      className="flex items-center justify-between rounded-lg border border-border bg-[#0F172A]/50 px-3 py-2"
+                      className="flex items-center justify-between rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/30 px-3 py-2"
                     >
                       <div className="flex items-center gap-2 min-w-0">
-                        <FileText className="h-4 w-4 shrink-0 text-primary" />
+                        <FileText className="h-4 w-4 shrink-0 text-[#6366F1]" />
                         <div className="min-w-0">
-                          <p className="text-sm font-medium truncate">{c.file.name}</p>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="text-sm font-medium truncate text-gray-800 dark:text-gray-100">{c.file.name}</p>
+                          <p className="text-xs text-gray-500 dark:text-gray-400">
                             {formatSize(c.file.size)} · {c.name}
                           </p>
                         </div>
@@ -380,7 +380,7 @@ export default function ScoringPage() {
                 </div>
               )}
 
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-gray-600 dark:text-gray-300">
                 {candidates.length} candidate{candidates.length !== 1 ? "s" : ""} ready to
                 analyze
               </p>
@@ -411,11 +411,11 @@ export default function ScoringPage() {
         <div>
           <Card className="dashboard-card min-h-[500px]">
             <CardHeader>
-              <CardTitle className="text-lg">Results</CardTitle>
+              <CardTitle className="text-lg text-gray-800 dark:text-gray-100">Results</CardTitle>
             </CardHeader>
             <CardContent>
               {!analyzing && !showResults && (
-                <div className="flex flex-col items-center justify-center py-20 text-center text-muted-foreground">
+                <div className="flex flex-col items-center justify-center py-20 text-center text-gray-600 dark:text-gray-300">
                   <FileText className="mb-4 h-12 w-12 opacity-40" />
                   <p>Upload a job description and resumes, then click Analyze</p>
                 </div>
@@ -449,7 +449,7 @@ export default function ScoringPage() {
                                 ? "bg-success text-white"
                                 : current
                                   ? "bg-primary text-white"
-                                  : "bg-[#334155] text-muted-foreground"
+                                  : "bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400"
                             )}
                           >
                             {done ? "✓" : i + 1}
@@ -457,7 +457,7 @@ export default function ScoringPage() {
                           <span
                             className={cn(
                               "text-sm",
-                              current ? "text-foreground font-medium" : "text-muted-foreground"
+                              current ? "text-gray-900 dark:text-white font-medium" : "text-gray-500 dark:text-gray-400"
                             )}
                           >
                             {step.label}
@@ -472,16 +472,16 @@ export default function ScoringPage() {
               {showResults && results && (
                 <div className="animate-fade-in space-y-6">
                   <div className="rounded-2xl border border-primary/40 bg-primary/10 p-4">
-                    <p className="text-xs font-medium uppercase tracking-wide text-primary mb-1">
+                    <p className="text-xs font-medium uppercase tracking-wide text-[#6366F1] mb-1">
                       Top Candidate
                     </p>
-                    <p className="text-xl font-bold text-foreground">
+                    <p className="text-xl font-bold text-gray-900 dark:text-white">
                       {results.best_candidate}
-                      <span className="ml-2 text-primary">
+                      <span className="ml-2 text-[#6366F1]">
                         {sortedCandidates[0]?.fit_score}%
                       </span>
                     </p>
-                    <p className="mt-2 text-sm text-muted-foreground">
+                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
                       {results.analysis_summary}
                     </p>
                     <div className="mt-3 flex flex-wrap gap-2">
@@ -509,10 +509,10 @@ export default function ScoringPage() {
                       <div
                         key={candidate.name}
                         className={cn(
-                          "relative rounded-2xl border bg-[#0F172A]/40 p-5 transition-all",
+                          "relative rounded-2xl border bg-white dark:bg-gray-800 p-5 transition-all",
                           isTop
                             ? "border-amber-400/60 shadow-[0_0_24px_rgba(251,191,36,0.15)]"
-                            : "border-border"
+                            : "border-gray-200 dark:border-gray-700"
                         )}
                       >
                         {isTop && (
@@ -523,7 +523,7 @@ export default function ScoringPage() {
                         <div className="flex gap-4">
                           <ScoreGauge score={candidate.fit_score} />
                           <div className="flex-1 min-w-0">
-                            <h3 className="font-semibold text-lg">{candidate.name}</h3>
+                            <h3 className="font-semibold text-lg text-gray-900 dark:text-white">{candidate.name}</h3>
                             <Badge
                               className="mt-1"
                               style={{
@@ -534,14 +534,14 @@ export default function ScoringPage() {
                             >
                               {meta.label}
                             </Badge>
-                            <p className="mt-2 text-sm text-muted-foreground">
+                            <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
                               {candidate.summary}
                             </p>
-                            <p className="mt-1 text-xs text-muted-foreground">
-                              <strong className="text-foreground">Strength: </strong>
+                            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                              <strong className="text-gray-800 dark:text-gray-100">Strength: </strong>
                               {candidate.key_strength}
                             </p>
-                            <p className="mt-1 text-xs text-muted-foreground">
+                            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
                               {candidate.experience_gap}
                             </p>
                             <div className="mt-3 flex flex-wrap gap-1">

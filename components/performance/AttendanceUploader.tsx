@@ -113,10 +113,10 @@ export function AttendanceUploader({ onSuccess }: AttendanceUploaderProps) {
   };
 
   return (
-    <Card>
+    <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
       <CardHeader>
-        <CardTitle className="text-lg">Attendance Upload</CardTitle>
-        <CardDescription>
+        <CardTitle className="text-lg text-gray-800 dark:text-gray-100">Attendance Upload</CardTitle>
+        <CardDescription className="text-gray-600 dark:text-gray-300">
           Expected CSV format: Employee Name, Email, Date, Status, Hours Worked
         </CardDescription>
       </CardHeader>
@@ -124,43 +124,43 @@ export function AttendanceUploader({ onSuccess }: AttendanceUploaderProps) {
         <div
           {...getRootProps()}
           className={cn(
-            "flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-border p-8 transition-colors hover:border-primary/50",
-            isDragActive && "border-primary bg-primary/5"
+            "flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 p-8 transition-colors hover:border-[#6366F1]/50",
+            isDragActive && "border-[#6366F1] bg-[#6366F1]/5"
           )}
         >
           <input {...getInputProps()} />
-          <Upload className="mb-3 h-10 w-10 text-muted-foreground" />
-          <p className="text-sm text-muted-foreground">
+          <Upload className="mb-3 h-10 w-10 text-gray-500 dark:text-gray-400" />
+          <p className="text-sm text-gray-600 dark:text-gray-300">
             Drag & drop a CSV file here, or click to browse
           </p>
-          <p className="mt-1 text-xs text-muted-foreground">Accepts .csv files only</p>
+          <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Accepts .csv files only</p>
         </div>
 
         {preview.length > 0 && (
           <div className="space-y-3">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
               <FileSpreadsheet className="h-4 w-4" />
               Preview (first 10 rows of {allRows.length})
             </div>
-            <div className="overflow-x-auto rounded-lg border border-border">
+            <div className="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
               <table className="w-full text-sm">
-                <thead className="bg-secondary">
+                <thead className="bg-gray-50 dark:bg-gray-700">
                   <tr>
-                    <th className="px-3 py-2 text-left">Name</th>
-                    <th className="px-3 py-2 text-left">Email</th>
-                    <th className="px-3 py-2 text-left">Date</th>
-                    <th className="px-3 py-2 text-left">Status</th>
-                    <th className="px-3 py-2 text-left">Hours</th>
+                    <th className="px-3 py-2 text-left text-gray-700 dark:text-gray-200 font-medium">Name</th>
+                    <th className="px-3 py-2 text-left text-gray-700 dark:text-gray-200 font-medium">Email</th>
+                    <th className="px-3 py-2 text-left text-gray-700 dark:text-gray-200 font-medium">Date</th>
+                    <th className="px-3 py-2 text-left text-gray-700 dark:text-gray-200 font-medium">Status</th>
+                    <th className="px-3 py-2 text-left text-gray-700 dark:text-gray-200 font-medium">Hours</th>
                   </tr>
                 </thead>
                 <tbody>
                   {preview.map((row, i) => (
-                    <tr key={i} className="border-t border-border">
-                      <td className="px-3 py-2">{row["Employee Name"]}</td>
-                      <td className="px-3 py-2">{row.Email}</td>
-                      <td className="px-3 py-2">{row.Date}</td>
-                      <td className="px-3 py-2">{row.Status}</td>
-                      <td className="px-3 py-2">{row["Hours Worked"]}</td>
+                    <tr key={i} className="border-t border-gray-200 dark:border-gray-700">
+                      <td className="px-3 py-2 text-gray-800 dark:text-gray-100">{row["Employee Name"]}</td>
+                      <td className="px-3 py-2 text-gray-800 dark:text-gray-100">{row.Email}</td>
+                      <td className="px-3 py-2 text-gray-800 dark:text-gray-100">{row.Date}</td>
+                      <td className="px-3 py-2 text-gray-800 dark:text-gray-100">{row.Status}</td>
+                      <td className="px-3 py-2 text-gray-800 dark:text-gray-100">{row["Hours Worked"]}</td>
                     </tr>
                   ))}
                 </tbody>

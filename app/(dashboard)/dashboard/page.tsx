@@ -54,23 +54,23 @@ export default async function DashboardPage() {
       <DashboardCharts chartData={chartData} pieData={pieData} />
 
       <div className="grid gap-6 lg:grid-cols-2">
-        <Card>
+        <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
           <CardHeader>
-            <CardTitle className="text-lg">Recent Candidate Analyses</CardTitle>
+            <CardTitle className="text-lg text-gray-800 dark:text-gray-100">Recent Candidate Analyses</CardTitle>
           </CardHeader>
           <CardContent>
             {stats.candidates.length === 0 ? (
-              <p className="text-muted-foreground text-sm">No candidates analyzed yet</p>
+              <p className="text-gray-600 dark:text-gray-300 text-sm">No candidates analyzed yet</p>
             ) : (
               <div className="space-y-3">
                 {stats.candidates.slice(0, 5).map((c) => (
-                  <div key={c.id} className="flex items-center justify-between rounded-lg border border-border p-3">
+                  <div key={c.id} className="flex items-center justify-between rounded-lg border border-gray-200 dark:border-gray-700 p-3">
                     <div>
-                      <p className="font-medium text-sm">{c.candidate_name}</p>
-                      <p className="text-xs text-muted-foreground">{c.job_title}</p>
+                      <p className="font-medium text-sm text-gray-800 dark:text-gray-100">{c.candidate_name}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">{c.job_title}</p>
                     </div>
                     <div className="text-right">
-                      <p className="font-bold text-primary">{c.fit_score}%</p>
+                      <p className="font-bold text-[#6366F1]">{c.fit_score}%</p>
                       <Badge className={`text-xs ${getRecommendationColor(c.recommendation || "")}`}>
                         {c.recommendation}
                       </Badge>
@@ -82,20 +82,20 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
           <CardHeader>
-            <CardTitle className="text-lg">Recent Employee Performance</CardTitle>
+            <CardTitle className="text-lg text-gray-800 dark:text-gray-100">Recent Employee Performance</CardTitle>
           </CardHeader>
           <CardContent>
             {stats.employees.length === 0 ? (
-              <p className="text-muted-foreground text-sm">No employees yet</p>
+              <p className="text-gray-600 dark:text-gray-300 text-sm">No employees yet</p>
             ) : (
               <div className="space-y-3">
                 {stats.employees.slice(0, 5).map((e) => (
-                  <div key={e.id} className="flex items-center justify-between rounded-lg border border-border p-3">
+                  <div key={e.id} className="flex items-center justify-between rounded-lg border border-gray-200 dark:border-gray-700 p-3">
                     <div>
-                      <p className="font-medium text-sm">{e.name}</p>
-                      <p className="text-xs text-muted-foreground">{e.department || "No department"}</p>
+                      <p className="font-medium text-sm text-gray-800 dark:text-gray-100">{e.name}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">{e.department || "No department"}</p>
                     </div>
                     <Badge
                       variant={

@@ -52,13 +52,13 @@ export default async function CandidatesPage({
       />
 
       {topCandidate && (
-        <div className="mb-6 rounded-xl border border-primary/30 bg-primary/10 p-4 text-center">
-          <p className="text-lg">
+        <div className="mb-6 rounded-xl border border-indigo-200 dark:border-indigo-800 bg-indigo-50 dark:bg-indigo-950/30 p-4 text-center">
+          <p className="text-lg text-gray-800 dark:text-gray-100">
             🏆 Top Candidate:{" "}
-            <span className="font-bold text-primary">{topCandidate.candidate_name}</span>
+            <span className="font-bold text-[#6366F1]">{topCandidate.candidate_name}</span>
             {" — "}
-            <span className="font-bold">{topCandidate.fit_score}%</span> fit for{" "}
-            <span className="font-medium">{topCandidate.job_title}</span>
+            <span className="font-bold text-gray-900 dark:text-white">{topCandidate.fit_score}%</span> fit for{" "}
+            <span className="font-medium text-gray-800 dark:text-gray-100">{topCandidate.job_title}</span>
           </p>
         </div>
       )}

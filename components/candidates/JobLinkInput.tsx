@@ -82,19 +82,20 @@ export function JobLinkInput({ onJobFetched }: JobLinkInputProps) {
   };
 
   return (
-    <Card>
+    <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
       <CardHeader>
-        <CardTitle className="text-lg">Step 1 — Job Input</CardTitle>
+        <CardTitle className="text-lg text-gray-800 dark:text-gray-100">Step 1 — Job Input</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="space-y-2">
-          <Label htmlFor="jobUrl">Paste job URL (LinkedIn, Indeed, etc.)</Label>
+          <Label htmlFor="jobUrl" className="text-gray-700 dark:text-gray-200">Paste job URL (LinkedIn, Indeed, etc.)</Label>
           <div className="flex gap-2">
             <Input
               id="jobUrl"
               placeholder="https://linkedin.com/jobs/..."
               value={url}
               onChange={(e) => setUrl(e.target.value)}
+              className="bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder-gray-400"
             />
             <Button onClick={handleFetch} disabled={loading}>
               {loading ? (
@@ -111,40 +112,43 @@ export function JobLinkInput({ onJobFetched }: JobLinkInputProps) {
 
         {(showManual || manualDescription) && (
           <div className="space-y-2">
-            <Label htmlFor="manualDesc">Paste job description manually</Label>
+            <Label htmlFor="manualDesc" className="text-gray-700 dark:text-gray-200">Paste job description manually</Label>
             <Textarea
               id="manualDesc"
               rows={8}
               placeholder="Paste the full job description here..."
               value={manualDescription}
               onChange={(e) => setManualDescription(e.target.value)}
+              className="bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder-gray-400"
             />
             <div className="grid gap-2 sm:grid-cols-2">
               <Input
                 placeholder="Job Title"
                 value={jobTitle}
                 onChange={(e) => setJobTitle(e.target.value)}
+                className="bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder-gray-400"
               />
               <Input
                 placeholder="Company Name"
                 value={company}
                 onChange={(e) => setCompany(e.target.value)}
+                className="bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder-gray-400"
               />
             </div>
-            <Button variant="outline" onClick={handleManualSubmit}>
+            <Button variant="outline" onClick={handleManualSubmit} className="text-gray-900 dark:text-white">
               Use Manual Description
             </Button>
           </div>
         )}
 
         {jobTitle && !showManual && (
-          <div className="rounded-lg border border-border bg-secondary/30 p-4 space-y-2">
-            <p className="font-semibold">{jobTitle}</p>
-            {company && <p className="text-sm text-muted-foreground">{company}</p>}
+          <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/30 p-4 space-y-2">
+            <p className="font-semibold text-gray-800 dark:text-gray-100">{jobTitle}</p>
+            {company && <p className="text-sm text-gray-600 dark:text-gray-300">{company}</p>}
             {skills.length > 0 && (
               <div className="flex flex-wrap gap-2 pt-2">
                 {skills.map((skill) => (
-                  <Badge key={skill} variant="outline">
+                  <Badge key={skill} variant="outline" className="text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600">
                     {skill}
                   </Badge>
                 ))}

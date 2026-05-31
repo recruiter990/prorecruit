@@ -126,32 +126,32 @@ export default function EmployeeDetailPage() {
 
   return (
     <div>
-      <Link href="/performance" className="mb-4 inline-flex items-center text-sm text-muted-foreground hover:text-foreground">
+      <Link href="/performance" className="mb-4 inline-flex items-center text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
         <ArrowLeft className="mr-1 h-4 w-4" /> Back to Performance
       </Link>
 
       <TopBar title={employee.name} description={`${employee.position || "Employee"} · ${employee.department || "No department"}`} />
 
       <div className="mb-6 grid gap-6 lg:grid-cols-3">
-        <Card className="lg:col-span-2">
+        <Card className="lg:col-span-2 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
           <CardHeader>
-            <CardTitle className="text-lg">Employee Info</CardTitle>
+            <CardTitle className="text-lg text-gray-800 dark:text-gray-100">Employee Info</CardTitle>
           </CardHeader>
           <CardContent className="grid gap-4 sm:grid-cols-2">
             <div>
-              <p className="text-sm text-muted-foreground">Email</p>
-              <p className="font-medium">{employee.email || "—"}</p>
+              <p className="text-sm text-gray-700 dark:text-gray-200">Email</p>
+              <p className="font-medium text-gray-800 dark:text-gray-100">{employee.email || "—"}</p>
             </div>
             <div>
-              <p className="text-sm text-muted-foreground">Position</p>
-              <p className="font-medium">{employee.position || "—"}</p>
+              <p className="text-sm text-gray-700 dark:text-gray-200">Position</p>
+              <p className="font-medium text-gray-800 dark:text-gray-100">{employee.position || "—"}</p>
             </div>
             <div>
-              <p className="text-sm text-muted-foreground">Department</p>
-              <p className="font-medium">{employee.department || "—"}</p>
+              <p className="text-sm text-gray-700 dark:text-gray-200">Department</p>
+              <p className="font-medium text-gray-800 dark:text-gray-100">{employee.department || "—"}</p>
             </div>
             <div>
-              <p className="text-sm text-muted-foreground">Productivity Score</p>
+              <p className="text-sm text-gray-700 dark:text-gray-200">Productivity Score</p>
               <Badge className={getPerformanceColor(productivity.level)}>
                 {productivity.score}% — {productivity.level}
               </Badge>
@@ -159,13 +159,13 @@ export default function EmployeeDetailPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
           <CardContent className="flex flex-col items-center justify-center p-6 gap-4">
             <Button
               variant="outline"
               onClick={handleFlag}
               disabled={employee.flagged_for_review}
-              className="w-full"
+              className="w-full text-gray-900 dark:text-white"
             >
               <Flag className="mr-2 h-4 w-4" />
               {employee.flagged_for_review ? "Flagged for Review" : "Flag for Review"}
@@ -175,12 +175,12 @@ export default function EmployeeDetailPage() {
       </div>
 
       <div className="mb-6 grid gap-6 lg:grid-cols-2">
-        <Card>
+        <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
           <CardHeader>
-            <CardTitle className="text-lg">Monthly Attendance</CardTitle>
+            <CardTitle className="text-lg text-gray-800 dark:text-gray-100">Monthly Attendance</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-7 gap-1 text-center text-xs text-muted-foreground mb-2">
+            <div className="grid grid-cols-7 gap-1 text-center text-xs text-gray-500 dark:text-gray-400 mb-2">
               {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
                 <div key={d}>{d}</div>
               ))}
@@ -212,9 +212,9 @@ export default function EmployeeDetailPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
           <CardHeader>
-            <CardTitle className="text-lg">Productivity Trend</CardTitle>
+            <CardTitle className="text-lg text-gray-800 dark:text-gray-100">Productivity Trend</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={220}>
@@ -231,13 +231,13 @@ export default function EmployeeDetailPage() {
       </div>
 
       <div className="mb-6 grid gap-6 lg:grid-cols-2">
-        <Card>
+        <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
           <CardHeader>
-            <CardTitle className="text-lg">Task Breakdown</CardTitle>
+            <CardTitle className="text-lg text-gray-800 dark:text-gray-100">Task Breakdown</CardTitle>
           </CardHeader>
           <CardContent>
             {taskBreakdown.length === 0 ? (
-              <p className="text-muted-foreground text-sm">No tasks assigned</p>
+              <p className="text-gray-600 dark:text-gray-300 text-sm">No tasks assigned</p>
             ) : (
               <ResponsiveContainer width="100%" height={220}>
                 <PieChart>
@@ -253,20 +253,20 @@ export default function EmployeeDetailPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
           <CardHeader>
-            <CardTitle className="text-lg">All Tasks</CardTitle>
+            <CardTitle className="text-lg text-gray-800 dark:text-gray-100">All Tasks</CardTitle>
           </CardHeader>
           <CardContent>
             {tasks.length === 0 ? (
-              <p className="text-muted-foreground text-sm">No tasks yet</p>
+              <p className="text-gray-600 dark:text-gray-300 text-sm">No tasks yet</p>
             ) : (
               <div className="space-y-2 max-h-[220px] overflow-y-auto">
                 {tasks.map((task) => (
-                  <div key={task.id} className="flex items-center justify-between rounded-lg border border-border p-3">
+                  <div key={task.id} className="flex items-center justify-between rounded-lg border border-gray-200 dark:border-gray-700 p-3">
                     <div>
-                      <p className="text-sm font-medium">{task.task_name}</p>
-                      <p className="text-xs text-muted-foreground">{task.project_name}</p>
+                      <p className="text-sm font-medium text-gray-800 dark:text-gray-100">{task.task_name}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">{task.project_name}</p>
                     </div>
                     <Badge
                       variant={

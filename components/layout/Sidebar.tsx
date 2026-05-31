@@ -56,10 +56,10 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
 
   const NavContent = () => (
     <>
-      <div className="flex items-center gap-3 px-4 py-6 border-b border-[#F3F4F6]">
+      <div className="flex items-center gap-3 px-4 py-6 border-b border-gray-200 dark:border-gray-700">
         <span className="font-extrabold text-xl tracking-tight">
-          <span style={{ color: "#0A0A0A" }}>Pro</span>
-          <span style={{ color: "#6366F1" }}>Recruit</span>
+          <span className="text-gray-900 dark:text-white">Pro</span>
+          <span className="text-[#6366F1]">Recruit</span>
         </span>
       </div>
 
@@ -75,7 +75,7 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
                 "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors font-[family-name:var(--font-plus-jakarta-sans)]",
                 isActive
                   ? "bg-[#6366F1] text-white"
-                  : "text-[#6B7280] hover:bg-[#F9FAFB] hover:text-[#0A0A0A]"
+                  : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white"
               )}
             >
               <item.icon className="h-5 w-5" />
@@ -85,19 +85,19 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
         })}
       </nav>
 
-      <div className="border-t border-[#F3F4F6] p-4">
+      <div className="border-t border-gray-200 dark:border-gray-700 p-4">
         <div className="flex items-center gap-3 mb-3">
           <Avatar>
             <AvatarFallback>{initials}</AvatarFallback>
           </Avatar>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-[#0A0A0A] truncate">{userName || "HR User"}</p>
-            <p className="text-xs text-[#6B7280] truncate">{userEmail || ""}</p>
+            <p className="text-sm font-medium text-gray-900 dark:text-white truncate">{userName || "HR User"}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 truncate">{userEmail || ""}</p>
           </div>
         </div>
         <Button
           variant="ghost"
-          className="w-full justify-start gap-2 text-[#6B7280] hover:bg-[#F9FAFB] hover:text-[#0A0A0A]"
+          className="w-full justify-start gap-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white"
           onClick={handleLogout}
         >
           <LogOut className="h-4 w-4" />
@@ -112,7 +112,7 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
       <Button
         variant="ghost"
         size="icon"
-        className="fixed top-4 left-4 z-50 lg:hidden"
+        className="fixed top-4 left-4 z-50 lg:hidden text-gray-900 dark:text-white"
         onClick={() => setMobileOpen(!mobileOpen)}
       >
         {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -127,7 +127,7 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
 
       <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-40 flex w-64 flex-col bg-white border-r border-[#F3F4F6] transition-transform lg:translate-x-0 font-[family-name:var(--font-plus-jakarta-sans)]",
+          "fixed inset-y-0 left-0 z-40 flex w-64 flex-col bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 transition-transform lg:translate-x-0 font-[family-name:var(--font-plus-jakarta-sans)]",
           mobileOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >

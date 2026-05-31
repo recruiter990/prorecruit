@@ -93,12 +93,12 @@ export default function CandidateDetailPage() {
   }
 
   if (!candidate) {
-    return <p className="py-12 text-center text-muted-foreground">Analysis not found</p>;
+    return <p className="py-12 text-center text-gray-600 dark:text-gray-300">Analysis not found</p>;
   }
 
   return (
     <div>
-      <Link href="/candidates" className="mb-4 inline-flex items-center text-sm text-muted-foreground hover:text-foreground">
+      <Link href="/candidates" className="mb-4 inline-flex items-center text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
         <ArrowLeft className="mr-1 h-4 w-4" /> Back to Candidates
       </Link>
 
@@ -111,9 +111,9 @@ export default function CandidateDetailPage() {
       />
 
       <div className="my-6 grid gap-6 lg:grid-cols-2">
-        <Card>
+        <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
           <CardHeader>
-            <CardTitle className="text-lg">✅ Matched Skills</CardTitle>
+            <CardTitle className="text-lg text-gray-800 dark:text-gray-100">✅ Matched Skills</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex flex-wrap gap-2">
@@ -121,15 +121,15 @@ export default function CandidateDetailPage() {
                 <Badge key={skill} variant="success">{skill}</Badge>
               ))}
               {(!candidate.matched_skills || (candidate.matched_skills as string[]).length === 0) && (
-                <p className="text-sm text-muted-foreground">No matched skills identified</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">No matched skills identified</p>
               )}
             </div>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
           <CardHeader>
-            <CardTitle className="text-lg">❌ Missing Skills</CardTitle>
+            <CardTitle className="text-lg text-gray-800 dark:text-gray-100">❌ Missing Skills</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex flex-wrap gap-2">
@@ -137,7 +137,7 @@ export default function CandidateDetailPage() {
                 <Badge key={skill} variant="danger">{skill}</Badge>
               ))}
               {(!candidate.missing_skills || (candidate.missing_skills as string[]).length === 0) && (
-                <p className="text-sm text-muted-foreground">No missing skills identified</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">No missing skills identified</p>
               )}
             </div>
           </CardContent>
@@ -151,34 +151,34 @@ export default function CandidateDetailPage() {
       {analysis && (
         <>
           <div className="mb-6 grid gap-6 lg:grid-cols-2">
-            <Card>
+            <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
               <CardHeader>
-                <CardTitle className="text-lg">Strengths</CardTitle>
+                <CardTitle className="text-lg text-gray-800 dark:text-gray-100">Strengths</CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
+                <ul className="list-disc list-inside space-y-2 text-sm text-gray-600 dark:text-gray-300">
                   {analysis.strengths?.map((s, i) => <li key={i}>{s}</li>)}
                 </ul>
               </CardContent>
             </Card>
-            <Card>
+            <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
               <CardHeader>
-                <CardTitle className="text-lg">Concerns</CardTitle>
+                <CardTitle className="text-lg text-gray-800 dark:text-gray-100">Concerns</CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
+                <ul className="list-disc list-inside space-y-2 text-sm text-gray-600 dark:text-gray-300">
                   {analysis.concerns?.map((c, i) => <li key={i}>{c}</li>)}
                 </ul>
               </CardContent>
             </Card>
           </div>
 
-          <Card className="mb-6">
+          <Card className="mb-6 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
             <CardHeader>
-              <CardTitle className="text-lg">Suggested Interview Questions</CardTitle>
+              <CardTitle className="text-lg text-gray-800 dark:text-gray-100">Suggested Interview Questions</CardTitle>
             </CardHeader>
             <CardContent>
-              <ol className="list-decimal list-inside space-y-3 text-sm text-muted-foreground">
+              <ol className="list-decimal list-inside space-y-3 text-sm text-gray-600 dark:text-gray-300">
                 {analysis.interview_questions?.map((q, i) => (
                   <li key={i} className="leading-relaxed">{q}</li>
                 ))}
@@ -186,17 +186,17 @@ export default function CandidateDetailPage() {
             </CardContent>
           </Card>
 
-          <Card className="mb-6 border-primary/30 bg-primary/5">
+          <Card className="mb-6 border-[#6366F1]/30 bg-[#6366F1]/5">
             <CardHeader>
-              <CardTitle className="text-lg">Overall Verdict</CardTitle>
+              <CardTitle className="text-lg text-gray-800 dark:text-gray-100">Overall Verdict</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm leading-relaxed text-muted-foreground">
+              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
                 {analysis.overall_verdict}
               </p>
               {analysis.salary_expectation_alignment && (
-                <p className="mt-4 text-sm text-muted-foreground border-t border-border pt-4">
-                  <strong className="text-foreground">Salary Alignment: </strong>
+                <p className="mt-4 text-sm text-gray-600 dark:text-gray-300 border-t border-gray-200 dark:border-gray-700 pt-4">
+                  <strong className="text-gray-900 dark:text-white">Salary Alignment: </strong>
                   {analysis.salary_expectation_alignment}
                 </p>
               )}
@@ -213,23 +213,24 @@ export default function CandidateDetailPage() {
 
         <Dialog>
           <DialogTrigger asChild>
-            <Button variant="outline">Add Notes</Button>
+            <Button variant="outline" className="text-gray-900 dark:text-white">Add Notes</Button>
           </DialogTrigger>
-          <DialogContent>
+          <DialogContent className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
             <DialogHeader>
-              <DialogTitle>Candidate Notes</DialogTitle>
+              <DialogTitle className="text-gray-900 dark:text-white">Candidate Notes</DialogTitle>
             </DialogHeader>
             <Textarea
               rows={6}
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               placeholder="Add your notes about this candidate..."
+              className="bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder-gray-400"
             />
             <Button onClick={handleSaveNotes}>Save Notes</Button>
           </DialogContent>
         </Dialog>
 
-        <Button variant="outline" onClick={handleDownload}>
+        <Button variant="outline" onClick={handleDownload} className="text-gray-900 dark:text-white">
           <Download className="mr-2 h-4 w-4" />
           Download Report
         </Button>
