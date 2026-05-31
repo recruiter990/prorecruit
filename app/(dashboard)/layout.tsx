@@ -16,9 +16,9 @@ export default async function DashboardLayout({
   const userEmail = user?.email || "";
 
   return (
-    <div className="min-h-screen bg-white font-[family-name:var(--font-plus-jakarta-sans)]">
+    <div className="min-h-screen bg-gray-50 dark:bg-[#0A0F1E] font-[family-name:var(--font-plus-jakarta-sans)]">
       <Sidebar userName={userName} userEmail={userEmail} />
-      <main className="lg:pl-64 bg-white">
+      <main className="lg:pl-64 bg-gray-50 dark:bg-[#0A0F1E]">
         <div className="container mx-auto p-6 lg:p-8 text-[#0A0A0A] font-[family-name:var(--font-plus-jakarta-sans)]">{children}</div>
       </main>
     </div>
