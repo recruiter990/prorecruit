@@ -83,7 +83,7 @@ export default function SettingsPage() {
 
   return (
     <div>
-      <TopBar className= title="Settings" description="Manage your profile and preferences" />
+      <TopBar title="Settings" description="Manage your profile and preferences" />
 
       <div className="max-w-2xl space-y-6">
         <Card className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
