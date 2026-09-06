@@ -1,32 +1,57 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { toast } from "sonner";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
+
   const router = useRouter();
   const supabase = createClient();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const cleanName = name.trim();
+
+    if (!cleanName) {
+      toast.error("Please enter your name");
+      return;
+    }
+
     setLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+
+    const { error } = await supabase.auth.signInAnonymously({
+      options: {
+        data: {
+          full_name: cleanName,
+        },
+      },
+    });
+
     setLoading(false);
+
     if (error) {
+      console.error("Anonymous login error:", error);
       toast.error(error.message);
       return;
     }
-    toast.success("Welcome back!");
+
+    toast.success(`Welcome, ${cleanName}!`);
+
     router.push("/dashboard");
     router.refresh();
   };
@@ -41,43 +66,40 @@ export default function LoginPage() {
               <span style={{ color: "#6366F1" }}>Recruit</span>
             </span>
           </div>
-          <CardTitle className="font-heading">Welcome to ProRecruit</CardTitle>
-          <CardDescription>Sign in to your HR dashboard</CardDescription>
+
+          <CardTitle className="font-heading">
+            Welcome to ProRecruit
+          </CardTitle>
+
+          <CardDescription>
+            Enter your name to start using ProRecruit
+          </CardDescription>
         </CardHeader>
+
         <CardContent>
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="name">Your Name</Label>
+
               <Input
-                id="email"
-                type="email"
-                placeholder="you@company.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                id="name"
+                type="text"
+                placeholder="John Smith"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 required
+                autoComplete="name"
               />
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Signing in..." : "Sign In"}
+
+            <Button
+              type="submit"
+              className="w-full"
+              disabled={loading}
+            >
+              {loading ? "Starting..." : "Start Using ProRecruit"}
             </Button>
           </form>
-          <p className="mt-4 text-center text-sm text-muted-foreground">
-            Don&apos;t have an account?{" "}
-            <Link href="/register" className="text-primary hover:underline">
-              Register
-            </Link>
-          </p>
         </CardContent>
       </Card>
     </div>
