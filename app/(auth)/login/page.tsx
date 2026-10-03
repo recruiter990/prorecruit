@@ -2,106 +2,125 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { createClient } from "@/lib/supabase/client";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { toast } from "sonner";
 
-export default function LoginPage() {
+export default function RegisterPage() {
+  const router = useRouter();
+
   const [name, setName] = useState("");
+  const [company, setCompany] = useState("");
+  const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const router = useRouter();
-  const supabase = createClient();
-
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleStart = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const cleanName = name.trim();
-
-    if (!cleanName) {
-      toast.error("Please enter your name");
+    if (!name.trim()) {
+      alert("Please enter your name.");
       return;
     }
 
     setLoading(true);
 
-    const { error } = await supabase.auth.signInAnonymously({
-      options: {
-        data: {
-          full_name: cleanName,
-        },
-      },
-    });
+    // Store basic onboarding information locally.
+    // No Supabase Auth. No email/password account.
+    localStorage.setItem(
+      "prorecruit_profile",
+      JSON.stringify({
+        name: name.trim(),
+        company: company.trim(),
+        email: email.trim(),
+      })
+    );
 
-    setLoading(false);
-
-    if (error) {
-      console.error("Anonymous login error:", error);
-      toast.error(error.message);
-      return;
-    }
-
-    toast.success(`Welcome, ${cleanName}!`);
+    // Also keep the simple name value for older parts of the app.
+    localStorage.setItem("prorecruit_name", name.trim());
 
     router.push("/dashboard");
-    router.refresh();
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader className="text-center">
-          <div className="mx-auto mb-4">
-            <span className="font-extrabold text-xl tracking-tight">
-              <span style={{ color: "#0A0A0A" }}>Pro</span>
-              <span style={{ color: "#6366F1" }}>Recruit</span>
-            </span>
+    <div className="flex min-h-screen items-center justify-center bg-[#0f172a] p-4">
+      <div className="w-full max-w-[530px] rounded-2xl bg-white p-8 shadow-2xl">
+        <div className="mb-8 text-center">
+          <div className="mb-8 text-2xl font-extrabold tracking-tight">
+            <span className="text-black">Pro</span>
+            <span className="text-indigo-500">Recruit</span>
           </div>
 
-          <CardTitle className="font-heading">
+          <h1 className="text-2xl font-bold text-slate-900">
             Welcome to ProRecruit
-          </CardTitle>
+          </h1>
 
-          <CardDescription>
-            Enter your name to start using ProRecruit
-          </CardDescription>
-        </CardHeader>
+          <p className="mt-2 text-slate-500">
+            Enter your details to start using ProRecruit
+          </p>
+        </div>
 
-        <CardContent>
-          <form onSubmit={handleLogin} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="name">Your Name</Label>
-
-              <Input
-                id="name"
-                type="text"
-                placeholder="John Smith"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-                autoComplete="name"
-              />
-            </div>
-
-            <Button
-              type="submit"
-              className="w-full"
-              disabled={loading}
+        <form onSubmit={handleStart} className="space-y-5">
+          <div>
+            <label
+              htmlFor="name"
+              className="mb-2 block text-sm font-medium text-slate-700"
             >
-              {loading ? "Starting..." : "Start Using ProRecruit"}
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
+              Full Name *
+            </label>
+
+            <input
+              id="name"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Your name"
+              required
+              className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="company"
+              className="mb-2 block text-sm font-medium text-slate-700"
+            >
+              Company Name
+            </label>
+
+            <input
+              id="company"
+              type="text"
+              value={company}
+              onChange={(e) => setCompany(e.target.value)}
+              placeholder="Your company"
+              className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="email"
+              className="mb-2 block text-sm font-medium text-slate-700"
+            >
+              Email
+            </label>
+
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="you@company.com"
+              className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full rounded-lg bg-indigo-500 px-4 py-3 font-semibold text-white shadow-lg transition hover:bg-indigo-600 disabled:opacity-60"
+          >
+            {loading ? "Starting..." : "Start Using ProRecruit"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
